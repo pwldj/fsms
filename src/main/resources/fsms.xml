@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.example.BlogMapper">
+    <select id="getEventDynamic" parameterType="int" resultType="cn.edu.buct.fsms.bean.EventDynamic">
+        select * from eventdynamic WHERE eventID = #{0}
+    </select>
+    <select id="getEventList" resultType="cn.edu.buct.fsms.bean.Event">
+        select * from event where location != '' AND startTime != '' AND category != '' AND centuralWeiboID != '' AND centuralTF!= ''
+    </select>
+    <select id="getArticle" parameterType="int" resultType="cn.edu.buct.fsms.bean.Article">
+        select * from article_source WHERE article_id = #{0}
+    </select>
+    <select id="getArticleList" parameterType="int" resultType="cn.edu.buct.fsms.bean.Article">
+        select * from article_source WHERE event_id = #{0}
+    </select>
+    <select id="getEvent" parameterType="int" resultType="cn.edu.buct.fsms.bean.Event">
+        select * from event WHERE eventId = #{0}
+    </select>
+    <select id="getAllEventCount"  resultType="java.lang.Integer">
+        select count(*) from event
+    </select>
+    <select id="getAllArticalCount"  resultType="java.lang.Integer">
+        select count(*) from article_source
+    </select>
+    <select id="getArticalCount" parameterType="int"  resultType="java.lang.Integer">
+        select count(*) from article_source WHERE event_id = #{0}
+    </select>
+</mapper>
